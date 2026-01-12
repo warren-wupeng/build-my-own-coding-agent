@@ -2,7 +2,7 @@
 
 **A project demonstrating the evolution of Claude Code-like CLI programming assistants from simple to complex**
 
-This project showcases how to build an AI programming assistant through four progressive versions, from the simplest 33-line bash script to a fully-featured 1,783-line object-oriented Python architecture. Each version represents different design philosophies and complexity levels, demonstrating a 5,303% code growth journey.
+This project showcases how to build an AI programming assistant through four progressive versions, from the simplest 33-line bash script to a fully-featured 5,546-line modular Python architecture with sub-agent delegation. Each version represents different design philosophies and complexity levels, demonstrating a 16,703% code growth journey.
 
 ## Project Evolution Path
 
@@ -13,14 +13,14 @@ This project demonstrates four development stages of CLI programming assistants:
 2. **v1 - Adding Safety and Loops**: Understand necessary features for real-world applications
 3. **v2 - Introducing Tool System**: Learn structured API design
 4. **v3 - Complete Architecture**: Master extensible object-oriented design
-5. **v4 - Advanced Conversation Management**: Learn token optimization and conversation compression
+5. **v4 - Advanced Architecture & Delegation**: Learn modular architecture, sub-agent delegation, conversation compression, and production monitoring
 
 ### 🎯 Core Value of Each Version
 - **v0**: Proof of concept feasibility, minimal implementation
 - **v1**: Practical considerations, safety protection
 - **v2**: Architectural thinking, feature separation
 - **v3**: Engineering practices, extensibility
-- **v4**: Production optimization, token management, long conversation handling
+- **v4**: Production architecture, sub-agent delegation, conversation compression, comprehensive monitoring
 
 ## Version Overview
 
@@ -103,16 +103,17 @@ cd v3 && ./agent.sh "create a hello.py file and run it"
 cd v3r && ./agent.sh "create a hello.py file and run it"
 ```
 
-### 💬 V4 - Advanced Conversation Management (3057 lines of code)
-**Location**: `v4/` | **Complexity**: ⭐⭐⭐⭐⭐ | **Language**: Python + OOP + Layered Architecture
-- Modular architecture with 7 core modules (Core, LLM, Execution, Interface, Monitoring, Conversation, Tools)
-- Event-driven architecture with complete UI/business logic separation
-- Intelligent conversation compression with 265-line compression engine
+### 🚀 V4 - Advanced Architecture & Delegation (5,546 lines of code)
+**Location**: `v4/` | **Complexity**: ⭐⭐⭐⭐⭐ | **Language**: Python + Advanced OOP + Modular Architecture
+- Modular architecture with 8 core modules (Core, LLM, Execution, Interface, Monitoring, Conversation, Delegation, Tools)
+- Event-driven architecture with complete UI/business logic separation and event bubbling
+- **Sub-agent delegation system** with 4 specialized agent types and restricted tool sets
+- Intelligent conversation compression with 265-line compression engine (40-60% token reduction)
 - Automatic compression at 25 message threshold with conservative context preservation
-- Advanced statistics and monitoring system (221 lines)
-- 13 tools including 2 conversation management tools
-- Comprehensive test suite (406 lines across 2 test files)
-- **Learning Focus**: Production-ready architecture and token optimization
+- Advanced statistics and monitoring system (298 lines) with delegation tracking
+- 15 tools including 2 conversation management tools and 2 delegation tools
+- Comprehensive test suite (960 lines across 4 test files)
+- **Learning Focus**: Production architecture, delegation patterns, token optimization, and enterprise monitoring
 
 ```bash
 cd v4 && ./agent.sh "create a complex multi-file project"
@@ -128,7 +129,7 @@ cd v4 && ./agent.sh "create a complex multi-file project"
 | **V1** | 1 | 157 | Bash | Loop-based | +376% |
 | **V2** | 3 | 562 | Python | Modular system | +258% |
 | **V3** | 8 | 1,783 | Python + OOP | Framework | +217% |
-| **V4** | 21 | 3,416 | Python + OOP | Layered + Event-Driven | +92% |
+| **V4** | 29 | 5,546 | Python + OOP | Modular + Event-Driven + Delegation | +62% |
 
 ### Growth Visualization
 
@@ -140,18 +141,18 @@ V2:        558 ███████████████████
 V2r:      1003 ███████████████████████████████████
 V3:       1823 ████████████████████████████████████████████████████████████████
 V3r:      2904 █████████████████████████████████████████████████████████████████████████████████████████████████████████
-V4:       3057 ████████████████████████████████████████████████████████████████████████████████████████████████████████████
+V4:       5546 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 ```
 
 ### Key Metrics
 
 #### Main Evolution Track
-- **Total Growth**: 33 → 3,057 lines (**9,163% increase**)
+- **Total Growth**: 33 → 5,546 lines (**16,703% increase**)
 - **V0→V1**: Added safety mechanisms and conversation loops (+124 lines)
 - **V1→V2**: Language migration and tool system implementation (+401 lines)
 - **V2→V3**: Full OOP architecture and comprehensive framework (+1,265 lines)
-- **V3→V4**: Layered architecture with conversation management (+1,234 lines)
-- **Tools Evolution**: 0 → 0 → 6 → 11 → 13 tools across versions
+- **V3→V4**: Modular architecture with delegation and compression (+3,763 lines)
+- **Tools Evolution**: 0 → 0 → 6 → 11 → 15 tools across versions
 
 #### Refactoring Track
 - **V1→V1r**: Bash to Python migration (+103 lines)
@@ -188,29 +189,37 @@ V4:       3057 █████████████████████�
 - V3's exact functionality (11 tools, no conversation compression)
 - Perfect demonstration of architecture refactoring best practices
 
-**V4 (3057 lines total):**
+**V4 (5,546 lines total):**
 - **Core Modules**:
-  - `core/agent_core.py`: 138 lines (business logic)
+  - `core/agent_core.py`: 148 lines (business logic)
   - `app.py`: 80 lines (application manager)
   - `agent.py`: 12 lines (entry point)
-- **Tool System** (1,678 lines):
+- **Tool System** (2,833 lines):
   - `tools/base.py`: 195 lines
-  - `tools/registry.py`: 238 lines
+  - `tools/registry.py`: 246 lines
   - `tools/file_tools.py`: 300 lines
   - `tools/file_search_tools.py`: 255 lines
   - `tools/text_search_tools.py`: 172 lines
   - `tools/system_tools.py`: 372 lines
-  - `tools/conversation_tools.py`: 146 lines (NEW)
+  - `tools/conversation_tools.py`: 146 lines (conversation management)
+  - `tools/delegation_tools.py`: 347 lines (sub-agent delegation - NEW)
+- **Delegation System** (893 lines - NEW):
+  - `delegation/manager.py`: 431 lines (sub-agent lifecycle)
+  - `delegation/tool_sets.py`: 241 lines (tool set management)
+  - `delegation/events.py`: 221 lines (event handling)
 - **Architecture Modules**:
   - `conversation/compressor.py`: 265 lines (compression engine)
   - `llm/client.py`: 193 lines (API client)
   - `execution/tool_executor.py`: 218 lines (tool executor)
-  - `monitoring/statistics.py`: 221 lines (statistics collector)
-  - `interface/display.py`: 113 lines (output manager)
+  - `monitoring/statistics.py`: 298 lines (statistics collector)
+  - `interface/display.py`: 129 lines (output manager)
   - `interface/cli.py`: 60 lines (CLI parser)
-- **Testing** (406 lines):
+- **Testing & Demo** (1,157 lines):
   - `test_conversation_compact.py`: 244 lines
   - `test_safety.py`: 162 lines
+  - `test_delegation.py`: 290 lines (delegation lifecycle - NEW)
+  - `test_delegation_simple.py`: 264 lines (delegation scenarios - NEW)
+  - `demo_delegation.py`: 197 lines (delegation demo - NEW)
 
 ## Tools Available
 
@@ -229,6 +238,8 @@ V4:       3057 █████████████████████�
 | `pwd` | Current directory info | V3, V4 |
 | `compact_conversation` | Compact conversation history | V4 |
 | `conversation_stats` | Get conversation statistics | V4 |
+| `delegate_task` | Delegate tasks to specialized sub-agents | V4 |
+| `get_delegation_info` | Get delegation system status and info | V4 |
 
 ## Setup
 
@@ -253,7 +264,7 @@ export OPENROUTER_API_KEY="your-openrouter-api-key"
 
 3. Make scripts executable
 ```bash
-chmod +x v0/agent.sh v1/agent.sh v2/agent.py v3/agent.py
+chmod +x v*/agent.*
 ```
 
 ### Get OpenRouter API Key
@@ -282,7 +293,7 @@ cd v2
 ./agent.sh "find all function definitions in Python files"
 ```
 
-### V3 - Full-Featured (Recommended)
+### V3 - Full-Featured
 ```bash
 cd v3
 ./agent.sh "Create a Flask web application with proper structure"
@@ -290,37 +301,58 @@ cd v3
 ./agent.sh "Set up a new Python package with tests and documentation"
 ```
 
+### V4 - Advanced with Delegation (Recommended)
+```bash
+cd v4
+./agent.sh "Create a complex multi-module Python project with documentation"
+./agent.sh "Analyze performance bottlenecks across the entire codebase"
+./agent.sh "Set up CI/CD pipeline with automated testing and deployment"
+# Delegation examples:
+./agent.sh "delegate file operations to specialized agent and search for patterns"
+./agent.sh "Use delegation to separate analysis tasks from implementation"
+```
+
 ## Architecture
 
-### V4 Layered Architecture (Recommended)
+### V4 Modular Architecture with Delegation (Recommended)
 
-The advanced Python agent uses a layered, event-driven architecture with complete separation of concerns:
+The advanced Python agent uses a modular, event-driven architecture with complete separation of concerns and sub-agent delegation capabilities:
 
 ```
 v4/
 ├── agent.py              # Compatibility entry point (12 lines)
 ├── app.py                # Application manager (80 lines)
 ├── core/
-│   └── agent_core.py    # Pure business logic controller (138 lines)
+│   └── agent_core.py    # Pure business logic controller (148 lines)
 ├── llm/
 │   └── client.py        # LLM API client (193 lines)
 ├── conversation/
 │   └── compressor.py    # Intelligent compression engine (265 lines)
+├── delegation/          # Sub-agent delegation system (893 lines - NEW)
+│   ├── manager.py       # SubAgentManager for lifecycle (431 lines)
+│   ├── tool_sets.py     # ToolSet management (241 lines)
+│   └── events.py        # DelegationEventHandler (221 lines)
 ├── execution/
 │   └── tool_executor.py # Tool execution handler (218 lines)
 ├── monitoring/
-│   └── statistics.py    # Statistics collector (221 lines)
+│   └── statistics.py    # Statistics collector with delegation tracking (298 lines)
 ├── interface/
 │   ├── cli.py          # Command line interface (60 lines)
-│   └── display.py      # Display/output management (113 lines)
-└── tools/              # Tool system (1,678 lines total)
-    ├── base.py         # BaseTool class & ToolRegistry (195 lines)
-    ├── registry.py     # ToolManager & registration (238 lines)
-    ├── file_tools.py   # 4 file operation tools (300 lines)
-    ├── file_search_tools.py  # 2 file search tools (255 lines)
-    ├── text_search_tools.py  # 1 text search tool (172 lines)
-    ├── system_tools.py # 4 system operation tools (372 lines)
-    └── conversation_tools.py  # 2 conversation tools (146 lines)
+│   └── display.py      # Display/output management (129 lines)
+├── tools/              # Tool system (2,833 lines total)
+│   ├── base.py         # BaseTool class & ToolRegistry (195 lines)
+│   ├── registry.py     # ToolManager & registration (246 lines)
+│   ├── file_tools.py   # 4 file operation tools (300 lines)
+│   ├── file_search_tools.py  # 2 file search tools (255 lines)
+│   ├── text_search_tools.py  # 1 text search tool (172 lines)
+│   ├── system_tools.py # 4 system operation tools (372 lines)
+│   ├── conversation_tools.py  # 2 conversation management tools (146 lines)
+│   └── delegation_tools.py    # 2 delegation tools (347 lines - NEW)
+├── demo_delegation.py   # Delegation system demo (197 lines)
+├── test_delegation.py   # Delegation lifecycle tests (290 lines)
+├── test_delegation_simple.py  # Simple delegation scenarios (264 lines)
+├── test_conversation_compact.py  # Compression tests (244 lines)
+└── test_safety.py       # Safety mechanism tests (162 lines)
 ```
 
 ### V3 Tool System (Legacy)
@@ -341,10 +373,18 @@ v3/
 
 #### V4 Key Features
 
+**Sub-agent Delegation System (NEW):**
+- 4 specialized agent types: file, search, system, analysis
+- Restricted tool sets for focused task execution
+- Delegation history tracking and success metrics
+- Event bubbling for seamless integration
+- Sub-agent step limits and lifecycle management
+
 **Event-Driven Architecture:**
 - `AgentCore` emits events for UI communication
 - `EventHandler` processes all display logic
 - Complete separation of business logic and presentation
+- Event bubbling from sub-agents to parent
 
 **Conversation Management:**
 - Automatic compression at 25-message threshold
@@ -353,10 +393,11 @@ v3/
 - Manual compression tools available
 
 **Advanced Monitoring:**
-- Real-time statistics collection
+- Real-time statistics collection with delegation tracking
 - Performance metrics (steps/second, API calls/minute)
+- Delegation success rates and timing metrics
 - Export capabilities (JSON format)
-- Comprehensive session analytics
+- Comprehensive session analytics including delegation statistics
 
 #### Adding New Tools (V4)
 
@@ -478,10 +519,10 @@ my-coding-agents/
 │   ├── test_safety.py   # Security test suite
 │   └── README.md        # V3 documentation
 │
-└── v4/                   # Layered architecture (3,416 lines)
+└── v4/                   # Modular architecture with delegation (5,546 lines)
     ├── agent.py         # Compatibility entry point (12 lines)
     ├── app.py           # Application manager (80 lines)
-    ├── core/            # Business logic (143 lines)
+    ├── core/            # Business logic (153 lines)
     │   ├── __init__.py
     │   └── agent_core.py
     ├── llm/             # LLM communication (198 lines)
@@ -490,27 +531,36 @@ my-coding-agents/
     ├── conversation/    # Compression engine (270 lines)
     │   ├── __init__.py
     │   └── compressor.py
+    ├── delegation/      # Sub-agent delegation system (914 lines - NEW)
+    │   ├── __init__.py
+    │   ├── manager.py   # SubAgentManager
+    │   ├── tool_sets.py # ToolSet management
+    │   └── events.py    # Event handling
     ├── execution/       # Tool execution (224 lines)
     │   ├── __init__.py
     │   └── tool_executor.py
-    ├── monitoring/      # Statistics & analytics (226 lines)
+    ├── monitoring/      # Statistics & analytics (303 lines)
     │   ├── __init__.py
     │   └── statistics.py
-    ├── interface/       # CLI & display (179 lines)
+    ├── interface/       # CLI & display (195 lines)
     │   ├── __init__.py
     │   ├── cli.py
     │   └── display.py
-    ├── tools/           # Tool system (1,678 lines)
+    ├── tools/           # Tool system (2,840 lines)
     │   ├── __init__.py
     │   ├── base.py      # Base classes (195 lines)
-    │   ├── registry.py  # Tool management (238 lines)
+    │   ├── registry.py  # Tool management (246 lines)
     │   ├── file_tools.py     # File operations (300 lines)
     │   ├── file_search_tools.py  # File search (255 lines)
     │   ├── text_search_tools.py  # Text search (172 lines)
     │   ├── system_tools.py   # System commands (372 lines)
-    │   └── conversation_tools.py  # Conversation mgmt (146 lines)
+    │   ├── conversation_tools.py  # Conversation management (146 lines)
+    │   └── delegation_tools.py   # Delegation tools (347 lines - NEW)
+    ├── demo_delegation.py # Delegation demo (197 lines)
     ├── test_safety.py   # Security test suite (162 lines)
     ├── test_conversation_compact.py  # Compression tests (244 lines)
+    ├── test_delegation.py        # Delegation lifecycle tests (290 lines)
+    ├── test_delegation_simple.py # Simple delegation tests (264 lines)
     └── README.md        # V4 documentation
 ```
 
