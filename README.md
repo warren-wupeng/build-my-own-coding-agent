@@ -57,16 +57,16 @@ cd v1 && ./agent.sh "create a Python project structure"
 cd v1r && ./agent.sh "create a Python project structure"
 ```
 
-### 🛠️ V2 - Tool System (558 lines of code)
+### 🛠️ V2 - Tool System (521 lines of code)
 **Location**: `v2/` | **Complexity**: ⭐⭐⭐ | **Language**: Python
-- Introduce structured tool calling
-- Separate tool definitions from execution logic
+- Introduce structured tool calling with 6 tools
+- Inlined implementation in single file (agent.py)
 - Support file operations, search, system commands
-- Enhanced safety mechanisms with comprehensive dangerous command detection
-- **Learning Focus**: API design and feature modularization
+- Interactive safety model with user confirmation for dangerous operations
+- **Learning Focus**: Tool system design and safety implementation
 
 ```bash
-cd v2 && ./agent.sh "analyze the codebase structure"
+cd v2 && python agent.py "analyze the codebase structure"
 ```
 
 ### 🏛️ V2 Refactor - Modern Architecture (1003 lines of code)
@@ -127,9 +127,9 @@ cd v4 && ./agent.sh "create a complex multi-file project"
 |---------|-------|-------|----------|-------------|---------|
 | **V0** | 1 | 33 | Bash | Linear script | — |
 | **V1** | 1 | 157 | Bash | Loop-based | +376% |
-| **V2** | 3 | 562 | Python | Modular system | +258% |
-| **V3** | 8 | 1,783 | Python + OOP | Framework | +217% |
-| **V4** | 29 | 5,546 | Python + OOP | Modular + Event-Driven + Delegation | +62% |
+| **V2** | 1 | 521 | Python | Single-file inlined | +232% |
+| **V3** | 8 | 1,783 | Python + OOP | Framework | +242% |
+| **V4** | 29 | 5,546 | Python + OOP | Modular + Event-Driven + Delegation | +211% |
 
 ### Growth Visualization
 
@@ -137,7 +137,7 @@ cd v4 && ./agent.sh "create a complex multi-file project"
 V0:         33 █
 V1:        157 █████
 V1r:       260 ████████
-V2:        558 ███████████████████
+V2:        521 ██████████████████
 V2r:      1003 ███████████████████████████████████
 V3:       1823 ████████████████████████████████████████████████████████████████
 V3r:      2904 █████████████████████████████████████████████████████████████████████████████████████████████████████████
@@ -149,24 +149,22 @@ V4:       5546 █████████████████████�
 #### Main Evolution Track
 - **Total Growth**: 33 → 5,546 lines (**16,703% increase**)
 - **V0→V1**: Added safety mechanisms and conversation loops (+124 lines)
-- **V1→V2**: Language migration and tool system implementation (+401 lines)
-- **V2→V3**: Full OOP architecture and comprehensive framework (+1,265 lines)
+- **V1→V2**: Language migration and tool system implementation (+364 lines)
+- **V2→V3**: Full OOP architecture and comprehensive framework (+1,262 lines)
 - **V3→V4**: Modular architecture with delegation and compression (+3,763 lines)
 - **Tools Evolution**: 0 → 0 → 6 → 11 → 15 tools across versions
 
 #### Refactoring Track
 - **V1→V1r**: Bash to Python migration (+103 lines)
-- **V2→V2r**: Modern architecture refactoring (+445 lines)
+- **V2→V2r**: Modern architecture refactoring (+482 lines)
 - **V3→V3r**: V4 architecture adoption (+1,081 lines)
 - **Refactoring Impact**: Shows code quality improvement without feature changes
 - **Architecture Value**: V3r demonstrates V4 patterns with V3 functionality
 
 ### File Breakdown
 
-**V2 (558 lines total):**
-- `agent.py`: 165 lines
-- `tools_definitions.py`: 118 lines
-- `tools_execution.py`: 275 lines
+**V2 (521 lines total):**
+- `agent.py`: 521 lines (single file implementation with inlined tool definitions and execution)
 
 **V2r (1003 lines total):**
 - Modern Python architecture with 7 modules

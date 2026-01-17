@@ -28,10 +28,10 @@ cd v1r
 ./agent.sh "create a Python project structure"
 ```
 
-**V2 - Tool System (558 lines):**
+**V2 - Tool System (521 lines):**
 ```bash
 cd v2
-./agent.sh "analyze the codebase structure"
+python agent.py "analyze the codebase structure"
 ```
 
 **V2 Refactor - Modern Architecture (1000+ lines):**
@@ -91,11 +91,11 @@ cd v1r
 ./agent.sh "create a Python project with tests directory"
 ```
 
-**V2 Tests (Structured Tools - 558 lines):**
+**V2 Tests (Structured Tools - 521 lines):**
 ```bash
 cd v2
-./agent.sh "read the README file and summarize it"
-./agent.sh "search for 'class' definitions in all Python files"
+python agent.py "read the README file and summarize it"
+python agent.py "search for 'class' definitions in all Python files"
 ```
 
 **V2 Refactor Tests (Modern Architecture - 1003 lines):**
@@ -142,7 +142,7 @@ cd v4
 | **V3 Refactor** | `v3r/` | ⭐⭐⭐⭐ | 2904 | V4 architecture + V3 functionality (11 tools) |
 | **V3** | `v3/` | ⭐⭐⭐⭐ | 1823 | **Recommended** - Complete OOP architecture (11 tools) |
 | **V2 Refactor** | `v2r/` | ⭐⭐⭐ | 1003 | Modern Python architecture (6 tools) |
-| **V2** | `v2/` | ⭐⭐⭐ | 558 | Structured tool system (6 tools) |
+| **V2** | `v2/` | ⭐⭐⭐ | 521 | Structured tool system (6 tools) |
 | **V1 Refactor** | `v1r/` | ⭐⭐ | 260 | Python rewrite of V1 functionality |
 | **V1** | `v1/` | ⭐⭐ | 157 | Enhanced bash with safety (bash commands only) |
 | **V0** | `v0/` | ⭐ | 24 | Minimal proof of concept (bash commands only) |
@@ -161,6 +161,20 @@ cd v4
 - **V2 → V2r**: Study modern Python architecture practices
 - **V3 → V3r**: Understand modular architecture without feature changes
 - **Compare V3r vs V4**: See architecture vs feature evolution
+
+### V2 Tool System Architecture
+
+V2 introduces structured tool calling with a single-file implementation:
+
+```
+v2/
+├── agent.py              # Complete implementation (521 lines)
+│                         # - Tool definitions (inlined)
+│                         # - Tool execution logic
+│                         # - Main agent loop
+│                         # - Interactive safety system
+└── test_safety.py        # Security test suite
+```
 
 ### V3 Tool System Architecture (Recommended)
 
@@ -273,19 +287,19 @@ from .my_tools import HttpTool
 
 **Change AI Model:**
 - V3: `v3/agent.py` line ~40: `"model": "deepseek/deepseek-v3.2"`
-- V2: `v2/agent.py` line ~20: `"model": "deepseek/deepseek-v3.2"`
+- V2: `v2/agent.py` line ~364: `"model": "deepseek/deepseek-v3.2"`
 - V1: `v1/agent.sh` line ~45: model field in API call
 - V0: `v0/agent.sh` line ~15: model field in API call
 
 **Modify Timeouts:**
 - V3 API timeout: `v3/agent.py` (~60 seconds)
 - V3 tool execution: `v3/tools/system_tools.py` (~30 seconds)
-- V2 timeouts: `v2/agent.py` and `v2/tools_execution.py`
+- V2 timeouts: `v2/agent.py` (single file implementation)
 - V1/V0 timeouts: shell script timeout parameters
 
 **Safety Rules:**
 - V3: `v3/tools/system_tools.py` - `RunBashTool.execute()` danger patterns
-- V2: `v2/tools_execution.py` - `_execute_run_bash()` function
+- V2: `v2/agent.py` - `_is_dangerous_command()` and `_prompt_user_confirmation()` functions
 - V1: `v1/agent.sh` - regex pattern around line 21
 - V0: No safety rules (minimal implementation)
 
@@ -309,20 +323,20 @@ from .my_tools import HttpTool
 ### Main Evolution Track
 | Feature | V0 | V1 | V2 | V3 | V4 |
 |---------|----|----|----|----|----|----|
-| **Lines of Code** | 33 | 157 | 558 | 1823 | 3057 |
+| **Lines of Code** | 33 | 157 | 521 | 1823 | 3057 |
 | **Language** | Bash | Bash | Python | Python | Python |
 | **Tools** | 0 | 0 | 6 | 11 | 13 |
-| **Safety** | None | Basic | Timeout | Complete | Complete |
-| **Architecture** | Linear | Loop | Modular | OOP | Modular OOP |
+| **Safety** | None | Basic | Interactive | Complete | Complete |
+| **Architecture** | Linear | Loop | Single-file | OOP | Modular OOP |
 | **Extensibility** | None | None | Manual | Automatic | Advanced |
 | **Special Features** | - | Multi-step | Tool System | Production Ready | Conversation Mgmt |
 
 ### Refactoring Evolution
 | Feature | V1 | V1 Refactor | V2 | V2 Refactor | V3 | V3 Refactor |
 |---------|----|-----------|----|------------|----|-----------
-| **Lines of Code** | 157 | 260 | 558 | 1003 | 1823 | 2904 |
+| **Lines of Code** | 157 | 260 | 521 | 1003 | 1823 | 2904 |
 | **Language** | Bash | Python | Python | Python | Python | Python |
-| **Architecture** | Loop | OOP | Modular | Modern OOP | OOP | V4 Modular |
+| **Architecture** | Loop | OOP | Single-file | Modern OOP | OOP | V4 Modular |
 | **Purpose** | Original | Python Port | Original | Architecture | Original | Architecture Demo |
 
 ### Recommendations
