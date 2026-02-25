@@ -2,11 +2,11 @@
 
 **A project demonstrating the evolution of Claude Code-like CLI programming assistants from simple to complex**
 
-This project showcases how to build an AI programming assistant through four progressive versions, from the simplest 33-line bash script to a fully-featured 5,546-line modular Python architecture with sub-agent delegation. Each version represents different design philosophies and complexity levels, demonstrating a 16,703% code growth journey.
+This project showcases how to build an AI programming assistant through five progressive versions, from the simplest 33-line bash script to V4's 5,546-line modular Python architecture with sub-agent delegation and V5's 9,266-line SWE-bench evaluation integration. Each version represents different design philosophies and complexity levels, demonstrating a 28,078% code growth journey (V0→V5).
 
 ## Project Evolution Path
 
-This project demonstrates four development stages of CLI programming assistants:
+This project demonstrates five development stages of CLI programming assistants:
 
 ### 📖 Learning Path Recommendations
 1. **v0 - Understanding Basic Concepts**: Start with the simplest implementation
@@ -14,6 +14,7 @@ This project demonstrates four development stages of CLI programming assistants:
 3. **v2 - Introducing Tool System**: Learn structured API design
 4. **v3 - Complete Architecture**: Master extensible object-oriented design
 5. **v4 - Advanced Architecture & Delegation**: Learn modular architecture, sub-agent delegation, conversation compression, and production monitoring
+6. **v5 - SWE-bench Evaluation**: Benchmark the agent with SWE-bench dataset, Docker-based evaluation, and reproducible assessment
 
 ### 🎯 Core Value of Each Version
 - **v0**: Proof of concept feasibility, minimal implementation
@@ -21,6 +22,7 @@ This project demonstrates four development stages of CLI programming assistants:
 - **v2**: Architectural thinking, feature separation
 - **v3**: Engineering practices, extensibility
 - **v4**: Production architecture, sub-agent delegation, conversation compression, comprehensive monitoring
+- **v5**: Evaluation integration, SWE-bench benchmarking, reproducible agent assessment
 
 ## Version Overview
 
@@ -119,6 +121,20 @@ cd v3r && ./agent.sh "create a hello.py file and run it"
 cd v4 && ./agent.sh "create a complex multi-file project"
 ```
 
+### 🧪 V5 - SWE-bench Evaluation Integration (9,266 lines of code)
+**Location**: `v5/` | **Complexity**: ⭐⭐⭐⭐⭐ | **Language**: Python + uv + SWE-bench
+- Extends V4 with SWE-bench evaluation capabilities
+- Dataset loading (SWE-bench Lite), task conversion, patch generation, and Docker-based evaluation
+- Uses [uv](https://github.com/astral-sh/uv) for dependency management; Python >= 3.10
+- Same modular architecture as V4 (core, llm, conversation, delegation, execution, monitoring, interface, tools)
+- Optional Docker support for local SWE-bench evaluation
+- **Learning Focus**: Reproducible benchmarking, evaluation pipelines, and agent assessment
+
+```bash
+cd v5 && uv run python agent.py "your task description"
+# Or: uv sync && uv run pytest
+```
+
 ## 📊 Code Statistics
 
 ### Lines of Code Evolution (Excluding Tests)
@@ -130,6 +146,7 @@ cd v4 && ./agent.sh "create a complex multi-file project"
 | **V2** | 1 | 521 | Python | Single-file inlined | +232% |
 | **V3** | 8 | 1,783 | Python + OOP | Framework | +242% |
 | **V4** | 29 | 5,546 | Python + OOP | Modular + Event-Driven + Delegation | +211% |
+| **V5** | 43+ | 9,266 | Python + uv | V4 + SWE-bench Evaluation | +67% |
 
 ### Growth Visualization
 
@@ -142,17 +159,19 @@ V2r:      1003 █████████████████████�
 V3:       1823 ████████████████████████████████████████████████████████████████
 V3r:      2904 █████████████████████████████████████████████████████████████████████████████████████████████████████████
 V4:       5546 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+V5:       9266 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 ```
 
 ### Key Metrics
 
 #### Main Evolution Track
-- **Total Growth**: 33 → 5,546 lines (**16,703% increase**)
+- **Total Growth**: 33 → 9,266 lines (**28,078% increase**, V0→V5)
 - **V0→V1**: Added safety mechanisms and conversation loops (+124 lines)
 - **V1→V2**: Language migration and tool system implementation (+364 lines)
 - **V2→V3**: Full OOP architecture and comprehensive framework (+1,262 lines)
 - **V3→V4**: Modular architecture with delegation and compression (+3,763 lines)
-- **Tools Evolution**: 0 → 0 → 6 → 11 → 15 tools across versions
+- **V4→V5**: SWE-bench evaluation integration (+3,720 lines)
+- **Tools Evolution**: 0 → 0 → 6 → 11 → 15 tools across versions (V5 same as V4)
 
 #### Refactoring Track
 - **V1→V1r**: Bash to Python migration (+103 lines)
@@ -219,25 +238,31 @@ V4:       5546 █████████████████████�
   - `test_delegation_simple.py`: 264 lines (delegation scenarios - NEW)
   - `demo_delegation.py`: 197 lines (delegation demo - NEW)
 
+**V5 (9,266 lines total):**
+- Inherits V4 modular architecture (core, llm, conversation, delegation, execution, monitoring, interface, tools)
+- **SWE-bench integration**: `swebench/` (dataset loader, task conversion, patch generation, evaluation)
+- **Development**: `uv` + `pyproject.toml`, `pytest`, Docker support, `examples/`, `tests/`, `scripts/`
+- Same 15 tools as V4; optional Docker for local SWE-bench evaluation
+
 ## Tools Available
 
 | Tool | Description | Available In |
 |------|-------------|--------------|
-| `read_file` | Read file contents | V2, V3, V4 |
-| `write_file` | Write content to file | V2, V3, V4 |
-| `edit_file` | Make precise edits | V2, V3, V4 |
-| `list_files` | List directory contents | V3, V4 |
-| `glob` | Find files by pattern | V2, V3, V4 |
-| `grep` | Search text in files | V2, V3, V4 |
-| `find` | Advanced file search | V3, V4 |
-| `run_bash` | Execute shell commands | V2, V3, V4 |
-| `which` | Find command paths | V3, V4 |
-| `env` | Environment variables | V3, V4 |
-| `pwd` | Current directory info | V3, V4 |
-| `compact_conversation` | Compact conversation history | V4 |
-| `conversation_stats` | Get conversation statistics | V4 |
-| `delegate_task` | Delegate tasks to specialized sub-agents | V4 |
-| `get_delegation_info` | Get delegation system status and info | V4 |
+| `read_file` | Read file contents | V2, V3, V4, V5 |
+| `write_file` | Write content to file | V2, V3, V4, V5 |
+| `edit_file` | Make precise edits | V2, V3, V4, V5 |
+| `list_files` | List directory contents | V3, V4, V5 |
+| `glob` | Find files by pattern | V2, V3, V4, V5 |
+| `grep` | Search text in files | V2, V3, V4, V5 |
+| `find` | Advanced file search | V3, V4, V5 |
+| `run_bash` | Execute shell commands | V2, V3, V4, V5 |
+| `which` | Find command paths | V3, V4, V5 |
+| `env` | Environment variables | V3, V4, V5 |
+| `pwd` | Current directory info | V3, V4, V5 |
+| `compact_conversation` | Compact conversation history | V4, V5 |
+| `conversation_stats` | Get conversation statistics | V4, V5 |
+| `delegate_task` | Delegate tasks to specialized sub-agents | V4, V5 |
+| `get_delegation_info` | Get delegation system status and info | V4, V5 |
 
 ## Setup
 
@@ -310,11 +335,19 @@ cd v4
 ./agent.sh "Use delegation to separate analysis tasks from implementation"
 ```
 
+### V5 - SWE-bench Evaluation
+```bash
+cd v5
+uv sync
+uv run python agent.py "your task description"
+uv run pytest
+```
+
 ## Architecture
 
-### V4 Modular Architecture with Delegation (Recommended)
+### V4 / V5 Modular Architecture (Recommended)
 
-The advanced Python agent uses a modular, event-driven architecture with complete separation of concerns and sub-agent delegation capabilities:
+V4 and V5 share the same modular, event-driven architecture; V5 adds SWE-bench evaluation. The advanced Python agent uses a modular, event-driven architecture with complete separation of concerns and sub-agent delegation capabilities:
 
 ```
 v4/
@@ -517,7 +550,7 @@ my-coding-agents/
 │   ├── test_safety.py   # Security test suite
 │   └── README.md        # V3 documentation
 │
-└── v4/                   # Modular architecture with delegation (5,546 lines)
+├── v4/                   # Modular architecture with delegation (5,546 lines)
     ├── agent.py         # Compatibility entry point (12 lines)
     ├── app.py           # Application manager (80 lines)
     ├── core/            # Business logic (153 lines)
@@ -560,6 +593,13 @@ my-coding-agents/
     ├── test_delegation.py        # Delegation lifecycle tests (290 lines)
     ├── test_delegation_simple.py # Simple delegation tests (264 lines)
     └── README.md        # V4 documentation
+│
+└── v5/                   # V4 + SWE-bench evaluation (9,266 lines)
+    ├── agent.py, app.py, main.py
+    ├── core/, llm/, conversation/, delegation/, execution/, monitoring/, interface/, tools/
+    ├── swebench/          # SWE-bench integration
+    ├── uv + pyproject.toml, Docker support
+    └── README.md
 ```
 
 ### Contributing
