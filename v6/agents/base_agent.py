@@ -33,7 +33,13 @@ class BaseAgent(AgentCore):
     SYSTEM_PROMPT: str = "You are an AI agent."
 
     def __init__(self, name: str, role: str):
-        super().__init__()
+        # Skip AgentCore.__init__() to avoid requiring OPENROUTER_API_KEY at construction.
+        # LLM/tools are initialized lazily when actually needed for task execution.
+        self.messages = []
+        self.tools = []
+        self.max_steps = 50
+        self.event_handler = None
+
         self.agent_name = name
         self.role = role
 
