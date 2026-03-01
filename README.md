@@ -1,12 +1,12 @@
 # My Coding Agents
 
-**A project demonstrating the evolution of Claude Code-like CLI programming assistants from simple to complex**
+**A project demonstrating the evolution of AI programming assistants from a 33-line script to a multi-agent product team**
 
-This project showcases how to build an AI programming assistant through five progressive versions, from the simplest 33-line bash script to V4's 5,546-line modular Python architecture with sub-agent delegation and V5's 9,266-line SWE-bench evaluation integration. Each version represents different design philosophies and complexity levels, demonstrating a 28,078% code growth journey (V0→V5).
+This project showcases how to build an AI programming assistant through six progressive versions, from the simplest 33-line bash script to V6's autonomous Agent Team where three AI specialists (PM, Engineer, Strategist) collaborate to build software from a single description. Each version represents different design philosophies and complexity levels.
 
 ## Project Evolution Path
 
-This project demonstrates five development stages of CLI programming assistants:
+This project demonstrates six development stages of AI programming assistants:
 
 ### 📖 Learning Path Recommendations
 1. **v0 - Understanding Basic Concepts**: Start with the simplest implementation
@@ -15,6 +15,7 @@ This project demonstrates five development stages of CLI programming assistants:
 4. **v3 - Complete Architecture**: Master extensible object-oriented design
 5. **v4 - Advanced Architecture & Delegation**: Learn modular architecture, sub-agent delegation, conversation compression, and production monitoring
 6. **v5 - SWE-bench Evaluation**: Benchmark the agent with SWE-bench dataset, Docker-based evaluation, and reproducible assessment
+7. **v6 - Agent Team**: From solo coder to multi-agent product team — PM, Engineer, and Strategist collaborate autonomously
 
 ### 🎯 Core Value of Each Version
 - **v0**: Proof of concept feasibility, minimal implementation
@@ -23,6 +24,7 @@ This project demonstrates five development stages of CLI programming assistants:
 - **v3**: Engineering practices, extensibility
 - **v4**: Production architecture, sub-agent delegation, conversation compression, comprehensive monitoring
 - **v5**: Evaluation integration, SWE-bench benchmarking, reproducible agent assessment
+- **v6**: Multi-agent collaboration, autonomous product team, SOP-driven behavior
 
 ## Version Overview
 
@@ -341,6 +343,23 @@ cd v5
 uv sync
 uv run python agent.py "your task description"
 uv run pytest
+```
+
+### V6 - Agent Team (NEW)
+**Location**: `v6/` | **Complexity**: ⭐⭐⭐⭐⭐⭐ | **Language**: Python + Multi-Agent
+- Three autonomous agents: PM, Engineer, Strategist
+- Git-based shared state — no external database
+- Heartbeat-driven async execution
+- File-based Mailbox for inter-agent communication
+- SOP-driven agent behavior (Markdown → executable instructions)
+- **Learning Focus**: Multi-agent collaboration, autonomous teams, real-world software engineering patterns
+
+```bash
+cd v6
+uv sync
+agent-team init my-app
+agent-team start
+agent-team chat "Build a CLI Todo app in Python"
 ```
 
 ## Architecture
